@@ -4,10 +4,31 @@
   <head>
     <meta charset="utf-8" />
     <title>Chat Room</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding-top: 20px;
+      }
+      #chat-log {
+        background-color: bisque;
+        font-size: 1.5rem;
+        padding: 5px;
+      }
+      #chat-message-input {
+        font-size: 1.2rem;
+        padding: 3px;
+      }
+      #chat-message-submit {
+        font-size: 1.5rem;
+      }
+    </style>
   </head>
   <body>
-    <textarea id="chat-log" cols="100" rows="20"></textarea><br />
-    <input id="chat-message-input" type="text" size="100" /><br />
+    <textarea id="chat-log" cols="90" rows="15"></textarea><br />
+    <input id="chat-message-input" type="text" size="50" /><br />
     <input id="chat-message-submit" type="button" value="Send" />
     {{ room_name|json_script:"room-name" }}
     <script>
