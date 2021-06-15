@@ -32,13 +32,15 @@
     <input id="chat-message-submit" type="button" value="Send" />
     {{ room_name|json_script:"room-name" }}
     <script>
+      var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
+
       const roomName = JSON.parse(
         document.getElementById("room-name").textContent
       );
 
-      const chatSocket = new WebSocket(
-        "wss://" + window.location.host + "/ws/chat/" + roomName + "/"
-      );
+      var target =
+        ws_scheme + "://" + window.location.host + "/ws/chat/" + roomName + "/";
+      const chatSocket = new WebSocket(target);
 
       chatSocket.onmessage = function (e) {
         const data = JSON.parse(e.data);
